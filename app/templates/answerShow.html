@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Answers</h1>
+    <table>
+        <th> ID </th> <th> Email </th> <th> Question_ID </th> <th> Question </th> <th> Answer </th>
+        {% for a in answers %}
+        <tr>
+            <td>
+                {{ a.id }}
+            </td>
+            <td>
+                {{ a.email }}
+            </td>
+            <td align='center'>
+                {{ a.question_id }}
+            </td>
+            <td> 
+                {{ question_descriptions[loop.index-1] }}
+            </td>
+            <td>
+                {{ a.description }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

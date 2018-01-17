@@ -1,0 +1,15 @@
+
+prerequsites:
+Python2.7, virtualenv, pip must be installed.
+
+1. cd task1; source venv/bin/activate
+
+2. pip install -r requirements.txt
+
+3. export FLASK_APP=task1.py
+   export FLASK_DEBUG=1
+
+4. python task1.py
+
+
+

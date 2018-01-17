@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Questions</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+            {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <ul>
+        {% for q in form.question_fields %}
+        <li>
+            <div>{{ q.label }} {{ loop.index }} : 
+                
+                {{ form.questions[loop.index - 1].description }}
+                
+            </div>
+            {{ q(rows=4, cols=50) }}
+            {% for error in q.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br/><br/>
+        </li>
+        {% endfor %}
+        </ul>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
