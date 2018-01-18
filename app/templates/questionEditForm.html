@@ -5,17 +5,26 @@
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <ul>
-        {% for q in form.question_fields %}
+        {% for i in range(12) %}
+            {% set ques = form.question_fields[0][ 'question' + loop.index|string ] %}
+            {% set ques_type = form.question_fields[0][ 'question_type' + loop.index|string ] %}
+            {% set ques_choice = form.question_fields[0][ 'question_choice' + loop.index|string ] %}
         <li>
-            <div>{{ q.label }} {{ loop.index }} : </div>
-            {{ q(size=100, value=form.questions[loop.index-1].description) }}
-            {% for error in q.errors %}
+            <div><b>{{ ques.label }}</b> {{ form.questions[loop.index-1].id }} : 
+            </div>
+            {{ ques(size=100, value=form.questions[loop.index-1].description) }}<br/>
+            <div><b> Type </b></div>
+            {{ ques_type(size=100, value=form.questions[loop.index-1].type) }}<br/>
+            <div><b> Choice </b></div>
+            {{ ques_choice(size=100, value=form.questions[loop.index-1].choice) }}
+            {% for error in ques.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             <br/><br/>
         </li>
         {% endfor %}
         </ul>
-        <p>{{ form.submit() }}</p>
+
+       <p>{{ form.submit(style="height:30;width:100px;background-color: #4CAF50;") }}</p>
     </form>
 {% endblock %}

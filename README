@@ -1,15 +1,45 @@
 
+========= How to run program ========
+
 prerequsites:
-Python2.7, virtualenv, pip must be installed.
+This app is tested in Mac with python 2.7. It is NOT guaranteed that it should work in 
+Linux or Windows.
 
 1. cd task1; source venv/bin/activate
 
-2. pip install -r requirements.txt
-
-3. export FLASK_APP=task1.py
+2. export FLASK_APP=task1.py
    export FLASK_DEBUG=1
 
-4. python task1.py
+3. python task1.py
+
+4. open your web browser, and type http://localhost:5000
+
+
+=========  Philosophy =========
+
+1. Design:  Since it is a small Questionnaire, it shows to use all the questions
+   in one page to let user know it is not the endless questions there.
+
+2. Use Username (email) to make sure one person (one email address used) is able 
+   to submit once. There is a validator check there. This can be bound to login 
+   function of further development. This data is kept in answer table of database.
+
+3. Use database driven design. It helps no hard code data into source code.
+
+4. Questions and answers are put to two diff tables in sqlite3 database.
+
+5. Answer table's metadata question_id is referenced to question table's id.
+
+6. Editting questions is able to work at http://localhost:5000/admin/question. Also
+   some fileds has validaation check, like type field.
+
+7. Answers table info can be viewed at http://localhost:5000/admin/answer.
+
+8. This app is designed in dynamic programming. It is easy to upgrade and add more 
+   functions or for maintenance purpose.
+
+
+
 
 
 

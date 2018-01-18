@@ -1,0 +1,79 @@
+for i in range(len(questions)):
+        name = "question" + str(i+1)
+        if questions[i].type == 'textarea':
+            exec(name + " = TextAreaField(\"Question\",  validators=[DataRequired()])")
+        elif questions[i].type == 'selectbox':
+            l = questions[i].choice
+            l = map(lambda x: "'" + x + "'", l.split(","))
+            s = ",".join(l)
+            exec(name + " = SelectField(\"Question\", id=\"select_field\")")
+
+
+'''
+    if questions[0].type == 'textarea':
+        question1 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[0].type == 'selectbox':
+        question1 = RadioField("Question", choices=[(c, c) for c in questions[0].choice.split(",")])
+    if questions[1].type == 'textarea':
+        question2 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[1].type == 'selectbox':
+        question2 = RadioField("Question", choices=[(c, c) for c in questions[1].choice.split(",")])
+    if questions[2].type == 'textarea':
+        question3 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[2].type == 'selectbox':
+        question3 = RadioField("Question", choices=[(c, c) for c in questions[2].choice.split(",")])
+    if questions[3].type == 'textarea':
+        question4 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[3].type == 'selectbox':
+        question4 = RadioField("Question", choices=[(c, c) for c in questions[3].choice.split(",")])
+    if questions[4].type == 'textarea':
+        question5 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[4].type == 'selectbox':
+        question5 = RadioField("Question", choices=[(c, c) for c in questions[4].choice.split(",")])
+    if questions[5].type == 'textarea':
+        question6 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[5].type == 'selectbox':
+        question6 = RadioField("Question", choices=[(c, c) for c in questions[5].choice.split(",")])
+    if questions[6].type == 'textarea':
+        question7 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[6].type == 'selectbox':
+        question7 = RadioField("Question", choices=[(c, c) for c in questions[6].choice.split(",")])
+    if questions[7].type == 'textarea':
+        question8 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[7].type == 'selectbox':
+        question8 = RadioField("Question", choices=[(c, c) for c in questions[7].choice.split(",")])
+    if questions[8].type == 'textarea':
+        question9 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[8].type == 'selectbox':
+        question9 = RadioField("Question", choices=[(c, c) for c in questions[8].choice.split(",")])
+    if questions[9].type == 'textarea':
+        question10 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[9].type == 'selectbox':
+        question10 = RadioField("Question", choices=[(c, c) for c in questions[9].choice.split(",")])
+    if questions[10].type == 'textarea':
+        question11 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[10].type == 'selectbox':
+        question11 = RadioField("Question", choices=[(c, c) for c in questions[10].choice.split(",")])
+    if questions[11].type == 'textarea':
+        question12 = TextAreaField("Question",  validators=[DataRequired()])
+    elif questions[11].type == 'selectbox':
+        question12 = RadioField("Question", choices=[(c, c) for c in questions[11].choice.split(",")])
+    ''' 
+{% for q in form.question_fields[0]. %}
+
+            {% set ques = q[ 'question' + loop.index|string ] %}
+        <li>
+            <div>{{ ques.label }} {{ loop.index }} : 
+                
+                {{ form.questions[loop.index - 1].description }}
+                
+            </div>
+            {{ ques(rows=4, cols=50) }}
+            {{ q.__dict__}}<br/></br>
+            {{ ques.__dict__}}
+            {% for error in ques.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br/><br/>
+        </li>
+        {% endfor %}  

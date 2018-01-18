@@ -12,21 +12,20 @@
             {% endfor %}
         </p>
         <ul>
-        {% for q in form.question_fields %}
+        {% for i in range(12) %}
+            {% set ques = form.question_fields[0][ 'question' + loop.index|string ] %}
         <li>
-            <div>{{ q.label }} {{ loop.index }} : 
-                
+            <div>{{ ques.label }} {{ loop.index }} : 
                 {{ form.questions[loop.index - 1].description }}
-                
             </div>
-            {{ q(rows=4, cols=50) }}
-            {% for error in q.errors %}
+            {{ ques(rows=4, cols=50) }}
+            {% for error in ques.errors %}
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             <br/><br/>
         </li>
         {% endfor %}
         </ul>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit(style="height:30;width:100px;background-color: #4CAF50;") }}</p>
     </form>
 {% endblock %}

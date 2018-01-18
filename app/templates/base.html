@@ -9,12 +9,16 @@
     <body>
         <div>Questionnaire: <a href="/">Home</a></div>
         <hr>
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         <ul>
-            {% for message in messages %}
-            <li style="color: blue;">{{ message }}</li>
-            {% endfor %}
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <li style="color:red;">{{ message }}</li>
+                {% else %}
+                    <li style="color:blue;">{{ message }}</li>
+                {% endif %}
+              {% endfor %}
         </ul>
         {% endif %}
         {% endwith %}
