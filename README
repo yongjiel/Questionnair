@@ -17,8 +17,9 @@ Linux or Windows.
 
 =========  Philosophy =========
 
-1. Design:  Since it is a small Questionnaire, it shows to use all the questions
-   in one page to let user know it is not the endless questions there.
+1. Design:  Since it is a small Questionnaire, it shows to user all the questions
+   in one page to let user know it is not the endless questions there. It can be 
+   turned to pagination if more questions.
 
 2. Use Username (email) to make sure one person (one email address used) is able 
    to submit once. There is a validator check there. This can be bound to login 
